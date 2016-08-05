@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		div,form,input,span {margin: 0; padding: 0; position: absolute;}
+		span {top: 50%; margin-top: -0.5em;}
+		ul {position: absolute; left: 50%; top: 0; margin: 0; padding: 0; list-style: none; margin-top:0.5em;}
+		li {margin: 0.5em auto; cursor: pointer; color: #353535;}
+		#body {left: 0; top: 0; background: url(background.png); background-size: 100% 100%; z-index: 0;}
+		#screen {left: 3.02%; top: 18.33%; width: 67.76%; height: 78.52%; background: url(screen.png); background-size: 100% 100%; z-index: 1;}
+		#menu {left: 72.60%; top: 18.33%; width: 20.83%; height: 73.10%; background: url(menu.png); background-size: 100% 100%; z-index: 1;}
+		#nothing {left: 2.30%; top: 3.52%; width: 95.39%; height: 84.32%; background: url(nothing.png); background-size: 100% 100%; z-index: 10;}
+		#info {z-index: 2; left: 2.30%; top: 3.52%; width: 95.39%; height: 7.2%; line-height: 100%; background-color: #353535; color: white;}
+		#one {left: 0;}
+		#two {left: 33.33%;}
+		#three {left: 66.67%;}
+		#player {z-index: 2; left: 2.30%; top: 10.73%; width: 95.39%; height: 77.12%;}
+		#name  {z-index: 2; left: 7.75%; top: 3.94%; width: 84.5%; height: 7.63%; background-color: #353535; color: white;}
+		#special {left: 50%;}
+		#options {z-index: 2; left: 7.75%; top: 11.75%; width: 84.5%; height: 83.21%; background: url(white.png); background-size: 100% 100%; color: #373737; text-align: center;}
+		#submit {left: 40.4%; top: 77.12%; width: 20.51%; height: 8.25%; background: url(submit.png); border: 0; color: white; cursor: pointer; z-index: 3;}
+		#worksname {display: none;}
+	</style>
+
+	<script type="text/javascript" src="jquery.js"></script>
+
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+		$('#body').height(window.innerHeight);
+		$('#body').width(window.innerWidth);
+		$('#special').css("margin-left",$('#special').width()*-0.5);
+		$('ul').css("margin-left",$('ul').width()*-0.5);
+		$('li').click(function(){
+			$('#worksname').val($(this).text());
+			$('li').css("color","#353535");
+			$(this).css("color","#ff7c24");
+			$('#nothing').css("visibility","hidden");
+		})
+	});
+
+	$(window).resize(function(){
+		$('#body').height(window.innerHeight);
+		$('#body').width(window.innerWidth);
+		$('#special').css("margin-left",$('#special').width()*-0.5);
+		$('ul').css("margin-left",$('ul').width()*-0.5);
+	});
+
+	</script>
+</head>
+<body>
+	<div id="body">
+		<div id="screen">
+			<div id="nothing"></div>
+			<div id="info">
+				<span id="one">作品名称：</span>
+				<span id="two">参赛队伍：</span>			
+				<span id="three">投票数：</span>
+			</div>
+			<div id="player">
+				<embed src="http://player.youku.com/player.php/sid/XMTM4NDczOTg2MA==/v.swf" allowFullScreen="true" quality="high" width="100%" height="100%" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+			</div>
+			<form action="vote.php" method="post" style="width: 100%; height: 100%;">
+				<input type="text" id="worksname" name="worksname" value="" />
+				<input type="submit" id="submit" value="投票" />
+			</form>
+		</div>
+		<div id="menu">
+			<div id="name"><span id="special">作品名称<span></div>
+			<div id="options">
+				<ul>
+					<li>爱的西兰花1</li>
+					<li>爱的西兰花2</li>
+					<li>爱的西兰花3</li>
+					<li>爱的西兰花4</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
